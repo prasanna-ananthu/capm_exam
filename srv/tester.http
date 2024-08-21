@@ -1,0 +1,98 @@
+###Get the Service document
+http://localhost:4004/odata/v4/EmployeeService
+
+###Get the Service metadata document
+http://localhost:4004/odata/v4/EmployeeService/$metadata
+
+###Get all the Employees data
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+
+###Get all the Employees data
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+
+###Get all the Employees whose name starts with ‘S’
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=contains(nameFirst,'S')
+
+###Get the top 2 employees, use orderby salaryAmount
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$top=2&orderby=salaryAmount desc
+
+###CREATE an employee with salary <50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Prasanna",
+      "nameMiddle": null,
+      "nameLast": "Ananthu",
+      "nameInitials": null,
+      "Gender": "F",
+      "language": "E",
+      "phoneNumber": "+917661912801",
+      "Email": "sally.spring@itelo.info",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 5000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+    }
+
+###CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Prasanna",
+      "nameMiddle": null,
+      "nameLast": "Ananthu",
+      "nameInitials": null,
+      "Gender": "F",
+      "language": "E",
+      "phoneNumber": "+917661912801",
+      "Email": "sally.spring@itelo.info",
+      "loginName": "SPRINGS",
+      "Currency_code": "USD",
+      "salaryAmount": 5000000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+    }
+
+###CREATE an employee with salary <50000 & currency code EUR
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Prasanna",
+      "nameMiddle": null,
+      "nameLast": "Ananthu",
+      "nameInitials": null,
+      "Gender": "F",
+      "language": "E",
+      "phoneNumber": "+917661912801",
+      "Email": "sally.spring@itelo.info",
+      "loginName": "SPRINGS",
+      "Currency_code": "INR",
+      "salaryAmount": 5000,
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "My Bank of Antioch"
+    }
+
+###UPDATE an employee by keeping the nameFirst and loginName intact.
+PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+
+{
+    "nameFirst": "Sally",
+    "nameMiddle": "Susan",
+    "loginName": "Spring"
+}
+
+###UPDATE an employee by changing the loginName
+PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+
+{
+    "loginName": "Spring"
+}
