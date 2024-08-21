@@ -25,17 +25,17 @@ module.exports = cds.service.impl( async function(){
     
     //Validation for updating the data
     this.before ('UPDATE', EmployeeSet, async (req) => { 
-        if ('nameFirst' in req.data) {
-            req.error("Operation not allowed");
-       
-        }
-    })
-    this.before ('UPDATE', EmployeeSet, async (req) => { 
-        if ('loginName' in req.data) {
+        if (('nameFirst' in req.data) || ('loginName' in req.data)) {
             req.error("Operation not allowed");
        
         }
     });
+    // this.before ('UPDATE', EmployeeSet, async (req) => { 
+    //     if ('loginName' in req.data) {
+    //         req.error("Operation not allowed");
+       
+    //     }
+    // });
 
     this.after('UPDATE', EmployeeSet, (req) => {
         console.log('Update operation successful');
@@ -43,6 +43,6 @@ module.exports = cds.service.impl( async function(){
 
     //Validation for deleting
     this.on('DELETE' , EmployeeSet, (req) => {
-        console.log("Delete operation successfull")
+        console.log("Delete operation successful")
     });
 })
