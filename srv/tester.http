@@ -94,5 +94,11 @@ PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1
 Content-Type: application/json
 
 {
-    "loginName": "Spring"
+    "loginName": "Prasanna"
 }
+
+###DELETE any employee.
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/a7a21cf6-bd6b-4e0e-8189-e903d920e967
+
+###DELETE an employee whose nameFirst starts with ‘S’.
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=contains(nameFirst,'S')

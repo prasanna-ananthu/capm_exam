@@ -35,8 +35,14 @@ module.exports = cds.service.impl( async function(){
             req.error("Operation not allowed");
        
         }
-    })
+    });
+
     this.after('UPDATE', EmployeeSet, (req) => {
         console.log('Update operation successful');
+    });
+
+    //Validation for deleting
+    this.on('DELETE' , EmployeeSet, (req) => {
+        console.log("Delete operation successfull")
     });
 })

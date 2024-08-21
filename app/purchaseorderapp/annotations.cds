@@ -29,11 +29,11 @@ annotate service.POs with @(
             $Type : 'UI.DataField',
             Value : PARTNER_GUID.ADDRESS_GUID.CITY,
         },
-        // {
-        //     $Type : 'UI.DataField',
-        //     Value : OverallStatus,
-        //     Criticality: Status //Color code for the status
-        // },
+        {
+            $Type : 'UI.DataField',
+            Value : OverallStatus,
+            Criticality: Status //Color code for the status
+        },
     ],
     UI.HeaderInfo:{
         TypeName: 'Purchase Order',
